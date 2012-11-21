@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+	<title>Bible.JS</title>
+	<script src='http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js'></script>
+	<script src="jQuery.Bible.js"></script>
+	<script>
+		$(function(){
+			//Click the button...
+			$("#search").click(function(){
+				//get the search value
+				var passage = $.trim($("#query").val());
+
+				//Pass it in as well as a completion function
+				$.jBible(passage, function(data){
+					$("#output").html(JSON.stringify(data, null, '\t'));
+				});
+			});
+			
+		});
+	</script>
+</head>
+<body>
+	<h1>Bible.js</h1>
+
+	<input type="text" id='query' value='John 3:16-18'/>
+	<button id='search'>GO</button>
+
+	<pre id='output'></pre>
+	
+
+</body>
+</html>
